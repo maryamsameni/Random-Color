@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5e830;
+            overflow: hidden;
+        }
+
+        /* **** */
+
+        button {
+            position: absolute;
+            top: 40px;
+            left: 43%;
+            border-radius: 25px;
+            text-transform: capitalize;
+            background-color: #c4b421;
+            outline: 0;
+            border: 0;
+            padding: 10px 40px;
+            cursor: pointer;
+            color: white;
+        }
+
+        button:hover {
+            box-shadow: 0 22px 50px rgba(114, 108, 108, 0.918);
+        }
+
+        /* **** */
+
+        .every {
+            margin: 65px auto;
+            width: 70%;
+            height: 500px;
+            display: flex;
+            align-items: flex-end;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .every>.one {
+            width: 20%;
+            height: 90%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .every>.one>p {
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .every>.one>div {
+            width: 100%;
+            height: 90%;
+        }
+    </style>
+</head>
+
+<body>
+    <button>generate new</button>
+
+    <div class="every">
+        <div class="one">
+            <p>#000000</p>
+            <div class="box"></div>
+        </div>
+        <div class="one">
+            <p>#000000</p>
+            <div class="box"></div>
+        </div>
+        <div class="one">
+            <p>#000000</p>
+            <div class="box"></div>
+        </div>
+        <div class="one">
+            <p>#000000</p>
+            <div class="box"></div>
+        </div>
+        <div class="one">
+            <p>#000000</p>
+            <div class="box"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let _txt = document.querySelectorAll('.every>.one>p')
+    let _box = document.querySelectorAll('.every>.one>.box')
+    let _hex
+    document.getElementsByTagName('button')[0].addEventListener('click', function () {
+        for (i = 0; i < _txt.length; i++) {
+            _hex = '#' + Math.random().toString(16).substring(2, 8)
+            _txt[i].innerHTML = _hex
+            _box[i].style.backgroundColor = _hex
+        }
+    })
+
+    _txt.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            navigator.clipboard.writeText(item.innerHTML)
+            alert('Copy Done :D')
+        })
+    })
+</script>
+
+</html>
